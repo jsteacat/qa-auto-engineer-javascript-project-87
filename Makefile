@@ -3,6 +3,8 @@ lint:
 test:
 	npm test
 install:
-	npm install
+	npm ci
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
+gendiff:
+    node bin/gendiff.js
