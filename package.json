@@ -1,0 +1,18 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/jsteacat/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/jsteacat/qa-auto-engineer-javascript-project-87/actions)",
+  "main": ".src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jsteacat",
+  "license": "ISC",
+  "type": "module",
+  "bin": {
+    "gendiff": "./bin/gendiff.js"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}
