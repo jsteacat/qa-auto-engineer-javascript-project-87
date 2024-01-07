@@ -1,14 +1,14 @@
-export default (tree) => tree.reduce((acc, el) => {
-  switch (el.type) {
+export default (tree) => tree.reduce((acc, prop) => {
+  switch (prop.type) {
     case 'added':
-      return [...acc, `Property '${el.key}' was added with value: ${el.value}`];
+      return [...acc, `Property '${prop.key}' was added with value: ${prop.value}`];
     case 'deleted':
-      return [...acc, `Property '${el.key}' was removed`];
+      return [...acc, `Property '${prop.key}' was removed`];
     case 'changed':
-      return [...acc, `Property '${el.key}' was updated. From ${el.oldValue} to ${el.value}`];
+      return [...acc, `Property '${prop.key}' was updated. From ${prop.oldValue} to ${prop.value}`];
     case 'unchanged':
       return acc;
     default:
-      throw new Error(`Unknown type: ${el.type}`);
+      throw new Error(`Unknown type: ${prop.type}`);
   }
 }, []).join('\n');
