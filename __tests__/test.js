@@ -1,26 +1,24 @@
-import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import genDiffs from '../src/index.js';
+import fs from 'fs';
+import generateDiffs from '../src/index.js';
+import { expect, test } from '@jest/globals';
 
-const getFixturePath = (directory, filename) => path.join(dirname(fileURLToPath(import.meta.url)), '__fixtures__', directory, filename);
-const readFile = (directory, filename) => fs.readFileSync(getFixturePath(directory, filename), 'utf-8');
-const expectedStylish = readFile('expected', 'stylish.txt');
-const expectedPlain = readFile('expected', 'plain.txt');
-const expectedJson = readFile('expected', 'json.txt');
+// eslint-disable-next-line no-underscore-dangle
+const __filename = fileURLToPath(import.meta.url);
+// eslint-disable-next-line no-underscore-dangle
+const __dirname = dirname(__filename);
 
-test('test json files', () => {
-  const file1 = getFixturePath('files', 'file1.json');
-  const file2 = getFixturePath('files', 'file2.json');
-  expect(genDiffs(file1, file2, 'stylish')).toEqual(expectedStylish);
-  expect(genDiffs(file1, file2, 'plain')).toEqual(expectedPlain);
-  expect(genDiffs(file1, file2, 'json')).toEqual(expectedJson);
-});
+const getFixturePath = (filename) => path.join(__dirname, '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
+const expectedStylish = readFile('stylish.txt');
+const expectedPlain = readFile('plain.txt');
+const expectedJson = readFile('json.txt');
 
-test('test yml files', () => {
-  const file1 = getFixturePath('files', 'file1.yml');
-  const file2 = getFixturePath('files', 'file2.yml');
-  expect(genDiffs(file1, file2, 'stylish')).toEqual(expectedStylish);
-  expect(genDiffs(file1, file2, 'plain')).toEqual(expectedPlain);
-  expect(genDiffs(file1, file2, 'json')).toEqual(expectedJson);
+test.each(['json', 'yml'])('%s test', (format) => {
+  const file1 = getFixturePath(`file1.${format}`);
+  const file2 = getFixturePath(`file2.${format}`);
+  expect(generateDiffs(file1, file2, 'stylish')).toEqual(expectedStylish);
+  expect(generateDiffs(file1, file2, 'plain')).toEqual(expectedPlain);
+  expect(generateDiffs(file1, file2, 'json')).toEqual(expectedJson);
 });
