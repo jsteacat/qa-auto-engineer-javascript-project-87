@@ -2,7 +2,7 @@ import fs from 'fs';
 import { getFormat, getFullPath } from './utils/path.js';
 import parser from './utils/parsers.js';
 import getDataChanges from './dataChanges.js';
-import getFormattedData from './formatter/index.js';
+import getFormattedData from './formatters/index.js';
 
 export default (filepath1, filepath2, format) => {
   // 1: get full paths
