@@ -1,9 +1,9 @@
 lint:
-	npx eslint . --fix
+    npx eslint . --fix
 test:
-	npm test
+    npm test
 install:
-	npm ci
+    npm install
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 gendiff:
