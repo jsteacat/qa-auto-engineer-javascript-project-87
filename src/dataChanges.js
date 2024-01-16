@@ -4,7 +4,7 @@ export default (obj1, obj2) => {
   const keys2 = Object.keys(obj2);
 
   // 2: get all unique keys
-  const allKeys = Array.from(new Set([...keys1, ...keys2])).sort();
+  const allKeys = Array.from(new Set([...keys1, ...keys2]));
 
   return allKeys.map((key) => {
     if (!keys1.includes(key) && keys2.includes(key)) {
