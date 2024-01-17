@@ -4,7 +4,6 @@ export default (obj1, obj2) => {
   const keys2 = Object.keys(obj2);
 
   // 2: get all unique keys
-  // eslint-disable-next-line fp/no-mutating-methods
   const allKeys = Array.from(new Set([...keys1, ...keys2])).sort();
 
   return allKeys.map((key) => {
