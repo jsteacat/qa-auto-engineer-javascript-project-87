@@ -7,7 +7,7 @@ export default (obj1, obj2) => {
     for (let i = 0, endI = arr.length - 1; i < endI; i += 1) {
       let wasSwap = false;
       for (let j = 0, endJ = endI - i; j < endJ; j += 1) {
-        if (arr[j].name > arr[j + 1].name) {
+        if (arr[j] > arr[j + 1]) {
           const swap = arr[j];
           arr[j] = arr[j + 1];
           arr[j + 1] = swap;
